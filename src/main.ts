@@ -1,16 +1,38 @@
 // ==UserScript==
-// @name         dzen.ru
+// @name         coinkeeper
 // @namespace    http://tampermonkey.net/
 // @version      2024-03-03
-// @description  try to take over the world!
+// @description  extend coinkeeper functionality
 // @author       You
-// @match        *://dzen.ru/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=dzen.ru
+// @match        https://coinkeeper.me/feed
+// @icon         https://coinkeeper.me/favicon.ico
 // @grant        none
 // ==/UserScript==
-
 (() => {
-  'use strict';
-  const style = document.createElement('style');
-  console.log('style', style);
+  console.log('coinkeeper script loaded');
+  function addStyle() {
+    const CATEGORY = '.ck-category-block + .ck-dashboard-card ';
+    const category = document.querySelector(CATEGORY);
+    if (category) {
+      const titles = category.querySelectorAll(
+        '.ck-category__title',
+      ) as NodeListOf<HTMLDivElement>;
+
+      titles.forEach((title) => {
+        title.addEventListener('click', () => {
+          console.log('Title clicked!');
+          if (title.style.color === 'red') {
+            title.style.color = 'black';
+          } else {
+            title.style.color = 'red';
+          }
+        });
+      });
+    } else {
+      console.log('Category element not found');
+    }
+  }
+  window.onload = async function () {
+    addStyle();
+  };
 })();
