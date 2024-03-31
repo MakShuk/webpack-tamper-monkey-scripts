@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "commonjs",
     "declaration": false,
-    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
@@ -29,6 +28,7 @@
     "strictPropertyInitialization": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "removeComments": false
   }
 }
